@@ -9,10 +9,10 @@ pipeline {
     stage('Push image') { 
       steps { 
         script {
-         sh ""
+         sh """
           docker tag skander1919/dp-alpine skander1919/dp-alpine:latest
           docker push skander1919/dp-alpine:latest
-          ""
+          """
          }
       }
     }
