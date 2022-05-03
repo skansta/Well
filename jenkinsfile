@@ -11,7 +11,7 @@ pipeline {
         script {
         withCredentials([usernamePassword(credentialsId: 'dock-cred', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
          sh """
-          docker login -u "$USERNAME" -p "$PASSWORD" -h "registry.hib.docker.com"
+          docker login -u "$USERNAME" -p "$PASSWORD" -H "registry.hib.docker.com"
           docker tag skander1919/dp-alpine registry.hub.docker.com/skander1919/test123:1.0.1
           docker push registry.hub.docker.com/skander1919/test123:1.0.1
           """
