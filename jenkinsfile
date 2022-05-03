@@ -11,12 +11,12 @@ pipeline {
     }
    stage('Login') {
      steps {
-       sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-     }
-   }
-   stage('Push') {
-     steps {
-       sh 'docker push skander1919/dp-alpine:latest'
+       sh """
+        echo "building docker image"
+        docker login -u skander1919
+        docker tag skander1919/dp-alpine skander1919/dp-alpine:latest
+        docker push skander1919/dp-alpine:latest 
+       """
      }
    }
   }
