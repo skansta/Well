@@ -6,15 +6,11 @@ pipeline {
         sh 'docker build -t skander1919/dp-alpine:latest .'
       }
     }
-   stage('Login') {
-     steps {
-       sh """
-        echo "building docker image"
-        docker login -u skander1919
+    stage('Push image') {        
+        docker.withRegistry('', 'dock-cred') {
         docker tag skander1919/dp-alpine skander1919/dp-alpine:latest
-        docker push skander1919/dp-alpine:latest 
-       """
-     }
-   }
+        docker push skander1919/dp-alpine:latest
+        }
+    }
   }
 }
