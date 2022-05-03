@@ -11,7 +11,7 @@ pipeline {
         script {
          sh """
           docker tag skander1919/dp-alpine hub.docker.com/skander1919/dp-alpine:latest
-          docker push skander1919/dp-alpine:latest
+          docker push hub.docker.com/skander1919/dp-alpine:latest
           """
          }
       }
