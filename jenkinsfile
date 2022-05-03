@@ -8,11 +8,13 @@ pipeline {
     }
     stage('Push image') { 
       steps {
+        script {
         docker.withRegistry('', 'dock-cred') {
         sh """
          docker tag skander1919/dp-alpine skander1919/dp-alpine:latest
          docker push skander1919/dp-alpine:latest
          """
+        }
         }
     }
     }
